@@ -1,4 +1,11 @@
 --script SQL de ADESPO
+drop table VETERINARIO;
+drop table GANADERO;
+drop table SUMINISTRADOR;
+drop table PRODUCTO;
+drop table ALBARAN;
+drop table LINEAFACTURA;
+
 CREATE TABLE VETERINARIO(
 	cod_veterinario number constraint cod_vet_pk primary key,
 	num_colegiado number constraint num_vet_nn not null,
@@ -42,7 +49,7 @@ CREATE TABLE SUMINISTRADOR(
 	con_tlf1 varchar2(9),
 	con_tlf2 varchar2(9),
 	con_direccion varchar2(50),
-	con_cargo varchar2(20) 
+	con_cargo varchar2(20)
 );
 
 CREATE TABLE PRODUCTO(
@@ -94,14 +101,3 @@ CREATE TABLE LINEAFACTURA(
 	PVP number,
 	total number
 );
-
-
-
-
-
-
-
-
-
-
-

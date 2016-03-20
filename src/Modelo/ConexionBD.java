@@ -8,20 +8,25 @@ import java.sql.Statement;
 public class ConexionBD {
     
     private Connection conn;
-    private Statement st;
+    private static ConexionBD instancia=null;
+    private static Statement st;
 
     /* Constructores **********************************************************/
 
-    public ConexionBD() {
-        try {
-            conn=DriverManager.getConnection("jdbc:ucanaccess://bd.mdb");
-            st=conn.createStatement();
-        } catch (SQLException e) {
-            ;
+    private ConexionBD() {}
+    public static ConexionBD getInstancia() {
+        if (instancia==null) {
+            synchronized (ConexionBD.class) {
+                if (instancia==null)
+                    instancia=new ConexionBD();
+            }
+            instancia=new ConexionBD();
+            if (st==null){
+                st= instancia.getSt();
+            }
         }
-        
+        return instancia;
     }
-    
     /* Métodos getters & setters **********************************************/
 
     public Statement getSt() {
@@ -29,13 +34,15 @@ public class ConexionBD {
     }
 
     /* Otros métodos **********************************************************/
-
-    public void abrirConexion() throws Exception {
+    
+    private boolean abrirConexion(){
         try {
-            crearTablas();
+            conn=DriverManager.getConnection("jdbc:ucanaccess://bd.mdb");
+            st=conn.createStatement();
         } catch (SQLException e) {
-            throw new Exception("Error abrirConexion()!!",e);
+            return false;
         }
+        return true;
     }
     
     public void cerrarConexion() throws Exception {

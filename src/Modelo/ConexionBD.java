@@ -126,7 +126,7 @@ public class ConexionBD {
                     "	direccion CHAR(50),\n" +
                     "	nombre CHAR(20),\n" +
                     "	num_explotacion INTEGER,\n" +
-                    "	nif CHAR(9),\n" +
+                    "	nif CHAR(9),\n" +   
                     "	poblacion CHAR(50),\n" +
                     "	provincia CHAR(30),\n" +
                     "	num_animales INTEGER,\n" +

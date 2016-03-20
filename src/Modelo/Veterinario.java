@@ -2,44 +2,45 @@ package Modelo;
 
 public class Veterinario {
 
-    private String codVeterinario;
-    private int  numColegiado;
-    private int provColeg;
+    private int cod_veterinario;
+    private int  num_colegiado;
+    private int prov_coleg;
     private String apellidos;
     private String nombre;
     private String direccion;
     private String poblacion;
     private String provincia;
     private String nif;
-    private long telefono;
+    private long tfno;
     private String eMail;
     private String fax;
 
-    public Veterinario() {
-        this.codVeterinario = "";
-        this.numColegiado = 0;
-        this.provColeg = 0;
-        this.apellidos = "";
-        this.nombre = "";
-        this.direccion = "";
-        this.poblacion = "";
-        this.provincia = "";
-        this.nif = "";
-        this.telefono = 0;
-        this.eMail = "";
-        this.fax = "";
+    public Veterinario(int codVeterinario, int numColegiado, int provColeg, String apellidos, String nombre, String direccion, String poblacion, String provincia, String nif, long telefono, String eMail, String fax) {
+        this.cod_veterinario = codVeterinario;
+        this.num_colegiado = numColegiado;
+        this.prov_coleg = provColeg;
+        this.apellidos = apellidos;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.poblacion = poblacion;
+        this.provincia = provincia;
+        this.nif = nif;
+        this.tfno = telefono;
+        this.eMail = eMail;
+        this.fax = fax;
     }
 
-    public String getCodVeterinario() {
-        return codVeterinario;
+
+    public int getCodVeterinario() {
+        return cod_veterinario;
     }
 
     public int getNumColegiado() {
-        return numColegiado;
+        return num_colegiado;
     }
 
     public int getProvColeg() {
-        return provColeg;
+        return prov_coleg;
     }
 
     public String getApellidos() {
@@ -67,7 +68,7 @@ public class Veterinario {
     }
 
     public long getTelefono() {
-        return telefono;
+        return tfno;
     }
 
     public String geteMail() {
@@ -78,16 +79,16 @@ public class Veterinario {
         return fax;
     }
 
-    public void setCodVeterinario(String codVeterinario) {
-        this.codVeterinario = codVeterinario;
+    public void setCodVeterinario(int codVeterinario) {
+        this.cod_veterinario = codVeterinario;
     }
 
     public void setNumColegiado(int numColegiado) {
-        this.numColegiado = numColegiado;
+        this.num_colegiado = numColegiado;
     }
 
     public void setProvColeg(int provColeg) {
-        this.provColeg = provColeg;
+        this.prov_coleg = provColeg;
     }
 
     public void setApellidos(String apellidos) {
@@ -115,7 +116,7 @@ public class Veterinario {
     }
 
     public void setTelefono(long telefono) {
-        this.telefono = telefono;
+        this.tfno = telefono;
     }
 
     public void seteMail(String eMail) {
@@ -126,4 +127,3 @@ public class Veterinario {
         this.fax = fax;
     }
 }
-

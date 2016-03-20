@@ -74,6 +74,7 @@ public class ConexionBD {
                     "	tfno CHAR(9) not null,\n" +
                     "	eMail CHAR(20),\n" +
                     "	fax CHAR(9))";
+                System.out.println(sql);
                 st.executeUpdate(sql);
                 sql="CREATE TABLE GANADEROS(\n" +
                     "	codigo INTEGER constraint cod_gan_pk primary key,\n" +
@@ -86,6 +87,7 @@ public class ConexionBD {
                     "	tfno CHAR(9),\n" +
                     "	fax CHAR(9),\n" +
                     "	eMail CHAR(20))";
+                System.out.println(sql);
                 st.executeUpdate(sql);
                 sql="CREATE TABLE SUMINISTRADORES(\n" +
                     "	cod_suministrador INTEGER constraint cod_sum_pk primary key ,\n" +
@@ -103,46 +105,51 @@ public class ConexionBD {
                     "	con_tlf2 CHAR(9),\n" +
                     "	con_direccion CHAR(50),\n" +
                     "	con_cargo CHAR(20))";
+                System.out.println(sql);
+                st.executeUpdate(sql);
+                
+                sql="	CREATE TABLE ALBARAN(\n" +
+            "		num_albaran INTEGER constraint num_alb_pk primary key,\n" +
+            "		fecha Time,\n" +
+            "		direccion CHAR(50),\n" +
+            "		num_explotacion INTEGER,\n" +
+            "		nif CHAR(9),\n" +
+            "		poblacion CHAR(50),\n" +
+            "		provincia CHAR(30),\n" +
+            "		num_animales INTEGER,\n" +
+            "		num_colegiado INTEGER,\n" +
+            "		apellidos CHAR(30),\n" +
+            "		nombre CHAR(20))";
+                System.out.println(sql);
                 st.executeUpdate(sql);
                 sql="CREATE TABLE PRODUCTOS(\n" +
-                    "	cod_producto INTEGER not null,\n" +
-                    "	cod_suministrador CHAR(20) constraint cod_sum_fk foreign key references(SUMINISTRADORES),\n" +
-                    "	cod_albaran CHAR(20) constraint cod_alb_fk foreign key references(ALBARANES),\n" +
-                    "	nombre CHAR(20),\n" +
-                    "	presentacion CHAR(20),\n" +
-                    "	formato CHAR(30),\n" +
-                    "	unidades CHAR(20),\n" +
-                    "	composicion CHAR(20),\n" +
-                    "	tiempo_espera INTEGER-->No lo tengo claro\n" +
-                    "	forma_farmacologica CHAR(20),\n" +
-                    "	n_registro CHAR(20),\n" +
-                    "	lote CHAR(20),\n" +
-                    "	nec_receta boolean,\n" +
-                    "	fecha_compra date,\n" +
-                    "	caducidad date,\n" +
-                    "	precio INTEGER,\n" +
-                    "	PVP INTEGER,\n" +
-                    "	IVA INTEGER,\n" +
-                    "	indicaciones CHAR(30),\n" +
-                    "	instruciones CHAR(150),\n" +
-                    "	familia CHAR(20),-->No se que es\n" +
-                    "	almacen CHAR(20),-->No se que es\n" +
-                    "	grp_vtas CHAR(20),-->No se que es\n" +
-                    "	constraint pk_produc primary key(cod_producto,cod_suministrador,cod_albaran)";
-                st.executeUpdate(sql);
-                sql="CREATE TABLE ALBARANES(\n" +
-                    "	cod_albaran INTEGER constraint num_alb_pk primary key,\n" +
-                    "	fecha date,\n" +
-                    "	direccion CHAR(50),\n" +
-                    "	nombre CHAR(20),\n" +
-                    "	num_explotacion INTEGER,\n" +
-                    "	nif CHAR(9),\n" +   
-                    "	poblacion CHAR(50),\n" +
-                    "	provincia CHAR(30),\n" +
-                    "	num_animales INTEGER,\n" +
-                    "	num_colegiado INTEGER,\n" +
-                    "	apellidos CHAR(30),\n" +
-                    "	nombre CHAR(20))";
+"		cod_producto INTEGER,\n" +
+"		cod_suministrador INTEGER,\n" +
+"		cod_albaran INTEGER,\n" +
+"		nombre CHAR(20),\n" +
+"		presentacion CHAR(20),\n" +
+"		formato CHAR(30),\n" +
+"		unidades CHAR(20),\n" +
+"		composicion CHAR(20),\n" +
+"		tiempo_espera INTEGER,\n" +
+"		forma_farmacologica CHAR(20),\n" +
+"		n_registro CHAR(20),\n" +
+"		lote CHAR(20),\n" +
+"		nec_receta boolean,\n" +
+"		fecha_compra date,\n" +
+"		caducidad date,\n" +
+"		precio INTEGER,\n" +
+"		PVP INTEGER,\n" +
+"		IVA INTEGER,\n" +
+"		indicaciones CHAR(30),\n" +
+"		instruciones CHAR(150),\n" +
+"		familia CHAR(20),\n" +
+"		almacen CHAR(20),\n" +
+"		grp_vtas CHAR(20),\n" +
+"		constraint product_pk PRIMARY KEY(cod_producto,cod_suministrador,cod_albaran),\n" +
+"		constraint product_sum_fk FOREIGN KEY(cod_suministrador) REFERENCES SUMINISTRADORES,\n" +
+"		constraint product_alb_fk FOREIGN KEY(cod_albaran) REFERENCES ALBARAN)";
+                System.out.println(sql);
                 st.executeUpdate(sql);
                 sql="CREATE TABLE LINEAFACTURAS(\n" +
                     "	cod_albaran INTEGER ,\n" +
@@ -151,8 +158,10 @@ public class ConexionBD {
                     "	unidades INTEGER,\n" +
                     "	PVP INTEGER,\n" +
                     "	total INTEGER,\n" +
-                    "	constraint linea_Alb_fk foreign key(cod_albaran) references ALBARANES,\n" +
+                    "	constraint linea_Alb_fk foreign key(cod_albaran) references ALBARAN,\n" +
                     "	constraint linea_produc_fk foreign key(cod_producto) references PRODUCTOS)";
+                System.out.println(sql);
+                st.executeUpdate(sql);
             } catch (SQLException e2) {
                 throw new Exception("Error crearTablas()!!",e2);
             }
@@ -167,11 +176,11 @@ public class ConexionBD {
             st.executeQuery(sql);
             sql="drop table SUMINISTRADORES";
             st.executeQuery(sql);
+            sql="drop table ALBARAN";
+            st.executeQuery(sql);
+            sql="drop table LINEAFACTURA";
+            st.executeQuery(sql);
             sql="drop table PRODUCTOS";
-            st.executeQuery(sql);
-            sql="drop table ALBARANES";
-            st.executeQuery(sql);
-            sql="drop table LINEAFACTURAS;";
             st.executeQuery(sql);
         } catch (SQLException e1) {
             throw new Exception(e1.getMessage());

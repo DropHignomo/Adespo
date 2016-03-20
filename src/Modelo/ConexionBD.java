@@ -13,8 +13,13 @@ public class ConexionBD {
     /* Constructores **********************************************************/
 
     public ConexionBD() {
-        conn=null;
-        st=null;
+        try {
+            conn=DriverManager.getConnection("jdbc:ucanaccess://bd.mdb");
+            st=conn.createStatement();
+        } catch (SQLException e) {
+            ;
+        }
+        
     }
     
     /* Métodos getters & setters **********************************************/
@@ -27,8 +32,6 @@ public class ConexionBD {
 
     public void abrirConexion() throws Exception {
         try {
-            conn=DriverManager.getConnection("jdbc:ucanaccess://bd.mdb");
-            st=conn.createStatement();
             crearTablas();
         } catch (SQLException e) {
             throw new Exception("Error abrirConexion()!!",e);
@@ -146,6 +149,25 @@ public class ConexionBD {
             } catch (SQLException e2) {
                 throw new Exception("Error crearTablas()!!",e2);
             }
+        }
+    }
+    public void borrarTablas() throws Exception{
+        String sql;
+        try {
+            sql="drop table VETERINARIOS";
+            st.executeQuery(sql);
+            sql="drop table GANADEROS";
+            st.executeQuery(sql);
+            sql="drop table SUMINISTRADORES";
+            st.executeQuery(sql);
+            sql="drop table PRODUCTOS";
+            st.executeQuery(sql);
+            sql="drop table ALBARANES";
+            st.executeQuery(sql);
+            sql="drop table LINEAFACTURAS;";
+            st.executeQuery(sql);
+        } catch (SQLException e1) {
+            throw new Exception(e1.getMessage());
         }
     }
 }

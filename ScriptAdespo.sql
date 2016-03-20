@@ -51,7 +51,7 @@ CREATE TABLE SUMINISTRADORES(
 	con_cargo CHAR(20));
 
 	CREATE TABLE ALBARAN(
-		num_albaran INTEGER constraint num_alb_pk primary key,
+		cod_albaran INTEGER constraint num_alb_pk primary key,
 		fecha Time,
 		direccion CHAR(50),
 		num_explotacion INTEGER,
@@ -62,15 +62,6 @@ CREATE TABLE SUMINISTRADORES(
 		num_colegiado INTEGER,
 		apellidos CHAR(30),
 		nombre CHAR(20));
-
-	CREATE TABLE LINEAFACTURA(
-		cod_albaran INTEGER,
-		cod_producto INTEGER,
-		nombre_pro CHAR(20),
-		unidades INTEGER,
-		PVP INTEGER,
-		total INTEGER
-	);
 
 	CREATE TABLE PRODUCTOS(
 		cod_producto INTEGER,
@@ -99,3 +90,14 @@ CREATE TABLE SUMINISTRADORES(
 		constraint product_pk PRIMARY KEY(cod_producto,cod_suministrador,cod_albaran),
 		constraint product_sum_fk FOREIGN KEY(cod_suministrador) REFERENCES SUMINISTRADORES,
 		constraint product_alb_fk FOREIGN KEY(cod_albaran) REFERENCES ALBARAN);
+
+	CREATE TABLE LINEAFACTURA(
+		cod_albaran INTEGER,
+		cod_producto INTEGER,
+		nombre_pro CHAR(20),
+		unidades INTEGER,
+		PVP INTEGER,
+		total INTEGER,
+		constraint linea_Alb_fk foreign key(cod_albaran) references ALBARAN,
+		constraint linea_produc_fk foreign key(cod_producto) references PRODUCTOS
+	);

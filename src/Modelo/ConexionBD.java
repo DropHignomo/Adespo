@@ -74,7 +74,6 @@ public class ConexionBD {
                     "	tfno CHAR(9) not null,\n" +
                     "	eMail CHAR(20),\n" +
                     "	fax CHAR(9))";
-                System.out.println(sql);
                 st.executeUpdate(sql);
                 sql="CREATE TABLE GANADEROS(\n" +
                     "	codigo INTEGER constraint cod_gan_pk primary key,\n" +
@@ -87,7 +86,6 @@ public class ConexionBD {
                     "	tfno CHAR(9),\n" +
                     "	fax CHAR(9),\n" +
                     "	eMail CHAR(20))";
-                System.out.println(sql);
                 st.executeUpdate(sql);
                 sql="CREATE TABLE SUMINISTRADORES(\n" +
                     "	cod_suministrador INTEGER constraint cod_sum_pk primary key ,\n" +
@@ -105,22 +103,20 @@ public class ConexionBD {
                     "	con_tlf2 CHAR(9),\n" +
                     "	con_direccion CHAR(50),\n" +
                     "	con_cargo CHAR(20))";
-                System.out.println(sql);
                 st.executeUpdate(sql);
                 
-                sql="	CREATE TABLE ALBARAN(\n" +
-            "		num_albaran INTEGER constraint num_alb_pk primary key,\n" +
-            "		fecha Time,\n" +
-            "		direccion CHAR(50),\n" +
-            "		num_explotacion INTEGER,\n" +
-            "		nif CHAR(9),\n" +
-            "		poblacion CHAR(50),\n" +
-            "		provincia CHAR(30),\n" +
-            "		num_animales INTEGER,\n" +
-            "		num_colegiado INTEGER,\n" +
-            "		apellidos CHAR(30),\n" +
-            "		nombre CHAR(20))";
-                System.out.println(sql);
+                sql="CREATE TABLE ALBARAN(\n" +
+"		cod_albaran INTEGER constraint num_alb_pk primary key,\n" +
+"		fecha Time,\n" +
+"		direccion CHAR(50),\n" +
+"		num_explotacion INTEGER,\n" +
+"		nif CHAR(9),\n" +
+"		poblacion CHAR(50),\n" +
+"		provincia CHAR(30),\n" +
+"		num_animales INTEGER,\n" +
+"		num_colegiado INTEGER,\n" +
+"		apellidos CHAR(30),\n" +
+"		nombre CHAR(20))";
                 st.executeUpdate(sql);
                 sql="CREATE TABLE PRODUCTOS(\n" +
 "		cod_producto INTEGER,\n" +
@@ -149,18 +145,15 @@ public class ConexionBD {
 "		constraint product_pk PRIMARY KEY(cod_producto,cod_suministrador,cod_albaran),\n" +
 "		constraint product_sum_fk FOREIGN KEY(cod_suministrador) REFERENCES SUMINISTRADORES,\n" +
 "		constraint product_alb_fk FOREIGN KEY(cod_albaran) REFERENCES ALBARAN)";
-                System.out.println(sql);
                 st.executeUpdate(sql);
-                sql="CREATE TABLE LINEAFACTURAS(\n" +
-                    "	cod_albaran INTEGER ,\n" +
-                    "	cod_producto INTEGER,\n" +
-                    "	nombre_pro CHAR(20),\n" +
-                    "	unidades INTEGER,\n" +
-                    "	PVP INTEGER,\n" +
-                    "	total INTEGER,\n" +
-                    "	constraint linea_Alb_fk foreign key(cod_albaran) references ALBARAN,\n" +
-                    "	constraint linea_produc_fk foreign key(cod_producto) references PRODUCTOS)";
-                System.out.println(sql);
+                sql="CREATE TABLE LINEAFACTURA(\n" +
+"		cod_albaran INTEGER,\n" +
+"		cod_producto INTEGER,\n" +
+"		nombre_pro CHAR(20),\n" +
+"		unidades INTEGER,\n" +
+"		PVP INTEGER,\n" +
+"		total INTEGER\n" +
+"		)";
                 st.executeUpdate(sql);
             } catch (SQLException e2) {
                 throw new Exception("Error crearTablas()!!",e2);

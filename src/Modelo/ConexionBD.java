@@ -35,7 +35,7 @@ public class ConexionBD {
 
     /* Otros métodos **********************************************************/
     
-    private boolean abrirConexion(){
+    public boolean abrirConexion(){
         try {
             conn=DriverManager.getConnection("jdbc:ucanaccess://bd.mdb");
             st=conn.createStatement();
@@ -54,7 +54,7 @@ public class ConexionBD {
         }
     }
     
-    private void crearTablas() throws Exception {
+    public void crearTablas() throws Exception {
         String sql;
         try {
             sql="SELECT count(*) FROM VETERINARIOS";

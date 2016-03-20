@@ -9,7 +9,8 @@ public class Adespo {
     public static void main(String[] args) {
         try {
             ConexionBD bd=ConexionBD.getInstancia();
-            bd.borrarTablas();
+            bd.abrirConexion();
+            bd.crearTablas();
         } catch (Exception ex) {
             Logger.getLogger(Adespo.class.getName()).log(Level.SEVERE, null, ex);
         }

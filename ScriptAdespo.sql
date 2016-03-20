@@ -98,6 +98,7 @@ CREATE TABLE SUMINISTRADORES(
 		unidades INTEGER,
 		PVP INTEGER,
 		total INTEGER,
+		);
+
 		constraint linea_Alb_fk foreign key(cod_albaran) references ALBARAN,
 		constraint linea_produc_fk foreign key(cod_producto) references PRODUCTOS
-	);

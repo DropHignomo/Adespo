@@ -1,0 +1,87 @@
+productos
+	codigo
+	denominacion
+	presentación
+	formato
+	unidades
+	composicion
+	tiempo de espera(carne)
+	F.Farmacologica(Via oral,nasal,auditiva,intravenosa)
+	Nº Registro
+	Necesita receta(si,no)
+	lote
+	fechcompra
+	caducidad
+	Precio
+	PVP
+	iva
+	stock minimo
+	instrucciones
+	codFact
+	indicaciones
+	Almacen
+	
+	
+clientes 
+	codCliente
+	Nombre
+	nExplotacion
+	NIF/CIF
+	Dirección
+	CodigoPostal
+	Poblacion
+	Provincia
+	Tfno
+	Fax
+	e-mail
+	Tarifas(Dtos/Incrementos Precio)
+
+suministradores
+	Codigo
+	Nombre
+	Direccion
+	Código Postal
+	Población
+	Provincia
+	NIF
+	e-mail
+	Tfno
+	Fax
+	+Contacto
+		Nombre
+		Telefono
+		Movil
+		Direccion
+		Cargo
+veterinarios
+	codigo veterinario
+	nColegiado
+	ProvColeg
+	Apellidos
+	Nombre
+	Dirección
+	CódPostal
+	Población
+	Provincia
+	NIF
+	Tfno
+	Fax
+	e-mail
+albaranes
+	nAlbarán (autocompletado)
+	fecha actual
+	direccion
+	poblacion
+	n explotacion
+	nombre del cliente
+	nombre veterinario
+	tarifas
+	
+recetas
+	+Veterinario
+	+Propietario
+	+Producto
+	-AdespoComarca noroeste
+	-AMPARA UN SOLO TRATAMIENTO.Caduca a los 30 dias.
+
+libro(registro entrada salida)

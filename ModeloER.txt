@@ -1,0 +1,6 @@
+*un veterinario vende un producto a un cliente	
+
+*el suministrador vende el producto al veterinario
+
+*cuando el veterinario vende un producto se genera un albarán de compra
+*cuando un producto llega al veterinario se necesita registrarlo 

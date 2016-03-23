@@ -107,7 +107,7 @@ public class ConexionBD {
                 
                 sql="CREATE TABLE ALBARAN(\n" +
 "		cod_albaran INTEGER constraint num_alb_pk primary key,\n" +
-"		fecha Time,\n" +
+"		fecha date,\n" +
 "		direccion CHAR(50),\n" +
 "		num_explotacion INTEGER,\n" +
 "		nif CHAR(9),\n" +

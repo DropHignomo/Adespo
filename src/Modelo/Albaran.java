@@ -5,6 +5,7 @@ package Modelo;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Albaran {
     private int cod_albaran;
@@ -125,11 +126,11 @@ public class Albaran {
     public boolean alta() throws SQLException{
         Statement st=ConexionBD.getInstancia().getSt();
         String sql="insert into ALBARAN values("
-                +this.cod_albaran+","+this.fecha+","
-                +this.direccion+","+this.num_explotacion+","
-                +this.nif+","+this.poblacion+","+this.provincia+","
-                +this.num_animales+","+this.num_colegiado+","+this.apellidos+
-                ","+this.nombre+")";
+                +this.cod_albaran+",#"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fecha)+"#,'"
+                +this.direccion+"',"+this.num_explotacion+","
+                +this.nif+",'"+this.poblacion+"','"+this.provincia+"',"
+                +this.num_animales+","+this.num_colegiado+",'"+this.apellidos+
+                "','"+this.nombre+"')";
         return st.execute(sql);
     }
     public boolean baja() throws SQLException{
